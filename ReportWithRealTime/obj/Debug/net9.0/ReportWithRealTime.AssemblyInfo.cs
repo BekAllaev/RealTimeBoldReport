@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReportWithRealTime")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba08208d2c0a1568acbe1bf88e069fbd63b18bc7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReportWithRealTime")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReportWithRealTime")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
