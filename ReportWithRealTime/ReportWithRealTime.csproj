@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\scripts\boldreports-interop.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\scripts\boldreports-interop.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+  <PackageReference Include="BoldReports.Data.Csv" Version="8.1.7" />
+  <PackageReference Include="BoldReports.Data.WebData" Version="8.1.7" />
+  <PackageReference Include="BoldReports.Net.Core" Version="8.1.7" />
     <ProjectReference Include="..\ReportWithRealTime.Client\ReportWithRealTime.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.6" />
   </ItemGroup>
