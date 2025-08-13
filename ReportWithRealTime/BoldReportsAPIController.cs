@@ -71,9 +71,9 @@ public class BoldReportsAPIController : Controller, IReportController
             DataSourceCredentials.ConnectionString = JsonConvert.SerializeObject(model);
             DataSourceCredentials.IntegratedSecurity = false;
             reportOption.ReportModel.DataSourceCredentials = new List<DataSourceCredentials>
-                        {
-                                DataSourceCredentials
-                        };
+            {
+                DataSourceCredentials
+            };
         }
     }
 
