@@ -2,10 +2,17 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
-      "command": "dotnet",
+      "label": "build-backend",
       "type": "process",
-      "args": ["build"],
+      "command": "dotnet",
+      "args": [ "build", "${workspaceFolder}/Backend/Backend.csproj", "-c", "Debug" ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-blazor",
+      "type": "process",
+      "command": "dotnet",
+      "args": [ "build", "${workspaceFolder}/ReportWithRealTime/ReportWithRealTime.csproj", "-c", "Debug" ],
       "problemMatcher": "$msCompile"
     }
   ]

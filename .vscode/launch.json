@@ -1,37 +1,32 @@
 {
   "version": "0.2.0",
   "compounds": [
-    {
-      "name": "Run All",
-      "configurations": ["Run Backend", "Run Blazor"]
-    }
+    { "name": "Run All", "configurations": ["Run Backend", "Run Blazor"] }
   ],
   "configurations": [
     {
       "name": "Run Backend",
       "type": "coreclr",
       "request": "launch",
-      "program": "dotnet",
-      "args": ["run", "--project", "${workspaceFolder}/Backend", "--urls", "https://localhost:7276"],
+      "preLaunchTask": "build-backend",
+      "program": "${workspaceFolder}/Backend/bin/Debug/net9.0/Backend.dll",
       "cwd": "${workspaceFolder}/Backend",
-      "console": "integratedTerminal",
-      "stopAtEntry": false,
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "https://localhost:7276" },
+      "justMyCode": true,
+      "suppressJITOptimizations": true,
+      "serverReadyAction": { "action": "openExternally", "pattern": "\\bNow listening on:\\s+(https?://\\S+)" }
     },
     {
       "name": "Run Blazor",
       "type": "coreclr",
       "request": "launch",
-      "program": "dotnet",
-      "args": ["run", "--project", "${workspaceFolder}/ReportWithRealTime","--urls","https://localhost:7166"],
+      "preLaunchTask": "build-blazor",
+      "program": "${workspaceFolder}/ReportWithRealTime/bin/Debug/net9.0/ReportWithRealTime.dll",
       "cwd": "${workspaceFolder}/ReportWithRealTime",
-      "console": "integratedTerminal",
-      "stopAtEntry": false,
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "https://localhost:7166" },
+      "justMyCode": true,
+      "suppressJITOptimizations": true,
+      "serverReadyAction": { "action": "openExternally", "pattern": "\\bNow listening on:\\s+(https?://\\S+)" }
     }
   ]
 }
