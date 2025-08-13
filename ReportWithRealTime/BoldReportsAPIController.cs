@@ -1,6 +1,9 @@
+using BoldReports.Data.WebData;
+using BoldReports.Web;
 using BoldReports.Web.ReportViewer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 
 namespace ReportWithRealTime;
 
@@ -14,10 +17,13 @@ public class BoldReportsAPIController : Controller, IReportController
     // The IWebHostEnvironment is used within the sample to retrieve application data from the wwwroot.
     private IWebHostEnvironment _hostingEnvironment;
 
+    private Dictionary<string, object> _jsonResult;
+
     public BoldReportsAPIController(IMemoryCache memoryCache, IWebHostEnvironment hostingEnvironment)
     {
         _cache = memoryCache;
         _hostingEnvironment = hostingEnvironment;
+        _jsonResult = new();
     }
 
     //Get action for getting resources from the report
@@ -44,7 +50,32 @@ public class BoldReportsAPIController : Controller, IReportController
 
     [NonAction]
     public void OnReportLoaded(ReportViewerOptions reportOption)
-    { }
+    {
+        string basePath = _hostingEnvironment.WebRootPath;
+
+        List<DataSourceInfo> datasources = ReportHelper.GetDataSources(_jsonResult, this, _cache);
+
+        foreach (DataSourceInfo item in datasources)
+        {
+            string jsonValue = System.IO.File.ReadAllText(basePath + $@"\Resources\JsonDataSources\{item.DataSourceName}.json");
+
+            FileDataModel model = new FileDataModel();
+            model.DataMode = "inline";
+            model.Data = jsonValue;
+            item.DataProvider = "JSON";
+
+            DataSourceCredentials DataSourceCredentials = new DataSourceCredentials();
+            DataSourceCredentials.Name = item.DataSourceName;
+            DataSourceCredentials.UserId = null;
+            DataSourceCredentials.Password = null;
+            DataSourceCredentials.ConnectionString = JsonConvert.SerializeObject(model);
+            DataSourceCredentials.IntegratedSecurity = false;
+            reportOption.ReportModel.DataSourceCredentials = new List<DataSourceCredentials>
+                        {
+                                DataSourceCredentials
+                        };
+        }
+    }
 
     [HttpPost]
     public object PostFormReportAction()
@@ -53,8 +84,9 @@ public class BoldReportsAPIController : Controller, IReportController
     }
 
     [HttpPost]
-    public object PostReportAction([FromBody]Dictionary<string, object> jsonArray)
+    public object PostReportAction([FromBody] Dictionary<string, object> jsonArray)
     {
+        _jsonResult = jsonArray;
         return ReportHelper.ProcessReport(jsonArray, this, this._cache);
     }
 }
