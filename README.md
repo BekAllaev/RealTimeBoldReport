@@ -1,0 +1,1 @@
+Bold report + Blazor + SignalR
