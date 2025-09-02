@@ -1,6 +1,9 @@
 using BoldReports.Web;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.AspNetCore.WebSockets;
 using ReportWithRealTime.Client.Pages;
 using ReportWithRealTime.Components;
+using ReportWithRealTime.Services;
 
 Bold.Licensing.BoldLicenseProvider.RegisterLicense("gFVmCnZi2bVTJyccaSRxm5thTNY+P9ONI5ME6zQR0p0=");
 
@@ -11,8 +14,24 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddHttpClient("Api", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7276"); 
+});
+
 builder.Services.AddMemoryCache();
 builder.Services.AddControllers();
+
+builder.Services.AddSingleton<IJsonDataSourceUpdater, JsonDataSourceUpdater>();
+
+builder.Services.AddScoped(sp =>
+{
+    // /hubs/statistics — путь, который ты замапил на сервере
+    return new HubConnectionBuilder()
+        .WithUrl("https://localhost:7276/hubs/statistics")
+        .WithAutomaticReconnect()
+        .Build();
+});
 
 var app = builder.Build();
 

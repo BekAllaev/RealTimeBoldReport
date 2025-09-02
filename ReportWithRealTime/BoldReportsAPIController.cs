@@ -55,26 +55,45 @@ public class BoldReportsAPIController : Controller, IReportController
 
         List<DataSourceInfo> datasources = ReportHelper.GetDataSources(_jsonResult, this, _cache);
 
+        // List to hold all credentials
+        List<DataSourceCredentials> credentialsList = new List<DataSourceCredentials>();
+
         foreach (DataSourceInfo item in datasources)
         {
-            string jsonValue = System.IO.File.ReadAllText(basePath + $@"\Resources\JsonDataSources\{item.DataSourceName}.json");
+            string jsonFilePath = Path.Combine(basePath, "Resources", "JsonDataSources", $"{item.DataSourceName}.json");
 
-            FileDataModel model = new FileDataModel();
-            model.DataMode = "inline";
-            model.Data = jsonValue;
-            item.DataProvider = "JSON";
-
-            DataSourceCredentials DataSourceCredentials = new DataSourceCredentials();
-            DataSourceCredentials.Name = item.DataSourceName;
-            DataSourceCredentials.UserId = null;
-            DataSourceCredentials.Password = null;
-            DataSourceCredentials.ConnectionString = JsonConvert.SerializeObject(model);
-            DataSourceCredentials.IntegratedSecurity = false;
-            reportOption.ReportModel.DataSourceCredentials = new List<DataSourceCredentials>
+            if (System.IO.File.Exists(jsonFilePath))
             {
-                DataSourceCredentials
-            };
+                string jsonValue = System.IO.File.ReadAllText(jsonFilePath);
+
+                FileDataModel model = new FileDataModel
+                {
+                    DataMode = "inline",
+                    Data = jsonValue
+                };
+
+                item.DataProvider = "JSON";
+
+                DataSourceCredentials dataSourceCredentials = new DataSourceCredentials
+                {
+                    Name = item.DataSourceName,
+                    UserId = null,
+                    Password = null,
+                    ConnectionString = JsonConvert.SerializeObject(model),
+                    IntegratedSecurity = false
+                };
+
+                credentialsList.Add(dataSourceCredentials);
+            }
+            else
+            {
+                // Optional: log or handle missing file
+                Console.WriteLine($"JSON file not found for data source: {item.DataSourceName}");
+            }
         }
+
+        // Assign all credentials at once
+        reportOption.ReportModel.DataSourceCredentials = credentialsList;
     }
 
     [HttpPost]

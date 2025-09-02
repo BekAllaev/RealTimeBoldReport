@@ -32,15 +32,15 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>=Fields!Key.Value</Label>
+                  <Label>=Fields!CountryName.Value</Label>
                   <Group Name="Chart1_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Key.Value</GroupExpression>
+                      <GroupExpression>=Fields!CountryName.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Key.Value</Value>
+                      <Value>=Fields!CountryName.Value</Value>
                       <Direction>Ascending</Direction>
                     </SortExpression>
                   </SortExpressions>
@@ -57,11 +57,11 @@
             </ChartCategoryHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Value1">
+                <ChartSeries Name="Count1">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!Value.Value)</Y>
+                        <Y>=Sum(Fields!Count.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
@@ -727,22 +727,22 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label />
+                  <Label>Purchases</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>=Fields!Key.Value</Label>
-                  <Group Name="Chart3_CategoryGroup2">
+                  <Label>=Fields!Customer.Value</Label>
+                  <Group Name="Chart3_CategoryGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Key.Value</GroupExpression>
+                      <GroupExpression>=Fields!Customer.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Value.Value</Value>
+                      <Value>=Fields!Purchases.Value</Value>
                       <Direction>Descending</Direction>
                     </SortExpression>
                   </SortExpressions>
@@ -751,11 +751,11 @@
             </ChartCategoryHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Value3">
+                <ChartSeries Name="Purchases1">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!Value.Value)</Y>
+                        <Y>=Sum(Fields!Purchases.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
@@ -1418,7 +1418,7 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Value</Label>
+                  <Label>Sales</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
@@ -1433,7 +1433,7 @@
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Value.Value</Value>
+                      <Value>=Fields!Sales.Value</Value>
                       <Direction>Descending</Direction>
                     </SortExpression>
                   </SortExpressions>
@@ -1442,11 +1442,11 @@
             </ChartCategoryHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Value2">
+                <ChartSeries Name="Sales1">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!Value.Value)</Y>
+                        <Y>=Sum(Fields!Sales.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
@@ -2108,15 +2108,15 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>=Fields!Key.Value</Label>
+                  <Label>=Fields!CategoryName.Value</Label>
                   <Group Name="Chart5_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Key.Value</GroupExpression>
+                      <GroupExpression>=Fields!CategoryName.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Key.Value</Value>
+                      <Value>=Fields!CategoryName.Value</Value>
                       <Direction>Ascending</Direction>
                     </SortExpression>
                   </SortExpressions>
@@ -2133,11 +2133,11 @@
             </ChartCategoryHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Value3">
+                <ChartSeries Name="ProductsCount1">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!Value.Value)</Y>
+                        <Y>=Sum(Fields!ProductsCount.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
@@ -2160,6 +2160,7 @@
                         <ShadowColor>Transparent</ShadowColor>
                         <Border>
                           <Color>Transparent</Color>
+                          <Style>None</Style>
                         </Border>
                       </Style>
                       <ChartMarker>
@@ -2879,28 +2880,28 @@
       <rd:SecurityType>None</rd:SecurityType>
       <ConnectionProperties>
         <DataProvider>JSON</DataProvider>
-        <ConnectString>{"Data":"[\n    { \"Key\": \"USA\", \"Value\": 120 },\n    { \"Key\": \"Germany\", \"Value\": 85 },\n    { \"Key\": \"UK\", \"Value\": 60 },\n    { \"Key\": \"France\", \"Value\": 50 },\n    { \"Key\": \"Brazil\", \"Value\": 45 },\n    { \"Key\": \"Canada\", \"Value\": 30 }\n  ]\n","DataMode":"inline","URL":""}</ConnectString>
+        <ConnectString>{"Data":"[\n  { \"CountryName\": \"USA\", \"Count\": 120 },\n  { \"CountryName\": \"Germany\", \"Count\": 85 },\n  { \"CountryName\": \"UK\", \"Count\": 60 },\n  { \"CountryName\": \"France\", \"Count\": 50 },\n  { \"CountryName\": \"Brazil\", \"Count\": 45 },\n  { \"CountryName\": \"Canada\", \"Count\": 30 }\n]\n","DataMode":"inline","URL":""}</ConnectString>
       </ConnectionProperties>
     </DataSource>
     <DataSource Name="PurchasesByCustomers">
       <rd:SecurityType>None</rd:SecurityType>
       <ConnectionProperties>
         <DataProvider>JSON</DataProvider>
-        <ConnectString>{"Data":"[\n    { \"Key\": \"Great Lakes Food Market\", \"Value\": 13245.00 },\n    { \"Key\": \"Alfreds Futterkiste\", \"Value\": 12345.67 },\n    { \"Key\": \"Island Trading\", \"Value\": 11500.30 },\n    { \"Key\": \"Bon App\", \"Value\": 9876.54 },\n    { \"Key\": \"Hungry Owl All-Night Grocers\", \"Value\": 9456.78 },\n    { \"Key\": \"Eastern Connection\", \"Value\": 7543.21 }\n  ]","DataMode":"inline","URL":""}</ConnectString>
+        <ConnectString>{"Data":"[\n  { \"Customer\": \"Great Lakes Food Market\", \"Purchases\": 13245.00 },\n  { \"Customer\": \"Alfreds Futterkiste\", \"Purchases\": 12345.67 },\n  { \"Customer\": \"Island Trading\", \"Purchases\": 11500.30 },\n  { \"Customer\": \"Bon App\", \"Purchases\": 9876.54 },\n  { \"Customer\": \"Hungry Owl All-Night Grocers\", \"Purchases\": 9456.78 },\n  { \"Customer\": \"Eastern Connection\", \"Purchases\": 7543.21 }\n]\n","DataMode":"inline","URL":""}</ConnectString>
       </ConnectionProperties>
     </DataSource>
     <DataSource Name="SalesByEmployee">
       <rd:SecurityType>None</rd:SecurityType>
       <ConnectionProperties>
         <DataProvider>JSON</DataProvider>
-        <ConnectString>{"Data":"[\n    { \"Key\": 101, \"LastName\": \"Fuller\", \"Value\": 56000.75 },\n    { \"Key\": 102, \"LastName\": \"Davolio\", \"Value\": 62000.10 },\n    { \"Key\": 103, \"LastName\": \"Peacock\", \"Value\": 59800.55 },\n    { \"Key\": 104, \"LastName\": \"Leverling\", \"Value\": 53000.35 },\n    { \"Key\": 105, \"LastName\": \"Callahan\", \"Value\": 50500.00 },\n    { \"Key\": 106, \"LastName\": \"Suyama\", \"Value\": 48800.80 }\n  ]","DataMode":"inline","URL":""}</ConnectString>
+        <ConnectString>{"Data":"[\n    { \"Id\": 101, \"LastName\": \"Fuller\", \"Sales\": 56000.75 },\n    { \"Id\": 102, \"LastName\": \"Davolio\", \"Sales\": 62000.10 },\n    { \"Id\": 103, \"LastName\": \"Peacock\", \"Sales\": 59800.55 },\n    { \"Id\": 104, \"LastName\": \"Leverling\", \"Sales\": 53000.35 },\n    { \"Id\": 105, \"LastName\": \"Callahan\", \"Sales\": 50500.00 },\n    { \"Id\": 106, \"LastName\": \"Suyama\", \"Sales\": 48800.80 }\n  ]","DataMode":"inline","URL":""}</ConnectString>
       </ConnectionProperties>
     </DataSource>
     <DataSource Name="ProductsByCategory">
       <rd:SecurityType>None</rd:SecurityType>
       <ConnectionProperties>
         <DataProvider>JSON</DataProvider>
-        <ConnectString>{"Data":"[\n    { \"Key\": \"Beverages\", \"Value\": 50 },\n    { \"Key\": \"Confections\", \"Value\": 40 },\n    { \"Key\": \"Dairy Products\", \"Value\": 35 },\n    { \"Key\": \"Grains/Cereals\", \"Value\": 30 },\n    { \"Key\": \"Meat/Poultry\", \"Value\": 25 },\n    { \"Key\": \"Produce\", \"Value\": 20 }\n  ]","DataMode":"inline","URL":""}</ConnectString>
+        <ConnectString>{"Data":"[\n    { \"CategoryName\": \"Beverages\", \"ProductsCount\": 50 },\n    { \"CategoryName\": \"Confections\", \"ProductsCount\": 40 },\n    { \"CategoryName\": \"Dairy Products\", \"ProductsCount\": 35 },\n    { \"CategoryName\": \"Grains/Cereals\", \"ProductsCount\": 30 },\n    { \"CategoryName\": \"Meat/Poultry\", \"ProductsCount\": 25 },\n    { \"CategoryName\": \"Produce\", \"ProductsCount\": 20 }\n  ]","DataMode":"inline","URL":""}</ConnectString>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
@@ -2913,8 +2914,8 @@
           <Tables>
             <Table Name="Result" Schema="">
               <Columns>
-                <Column Name="Key" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
-                <Column Name="Value" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="CountryName" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Count" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
               </Columns>
               <SchemaLevels>
                 <SchemaInfo Name="Result" SchemaType="Table" />
@@ -2924,12 +2925,12 @@
         </QueryDesignerState>
       </Query>
       <Fields>
-        <Field Name="Key">
-          <DataField>Key</DataField>
+        <Field Name="CountryName">
+          <DataField>CountryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Value">
-          <DataField>Value</DataField>
+        <Field Name="Count">
+          <DataField>Count</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
@@ -2942,9 +2943,8 @@
           <Tables>
             <Table Name="Result" Schema="">
               <Columns>
-                <Column Name="Serie" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
-                <Column Name="Key" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
-                <Column Name="Value" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Customer" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Purchases" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
               </Columns>
               <SchemaLevels>
                 <SchemaInfo Name="Result" SchemaType="Table" />
@@ -2954,16 +2954,12 @@
         </QueryDesignerState>
       </Query>
       <Fields>
-        <Field Name="Serie">
-          <DataField>Serie</DataField>
+        <Field Name="Customer">
+          <DataField>Customer</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Key">
-          <DataField>Key</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Value">
-          <DataField>Value</DataField>
+        <Field Name="Purchases">
+          <DataField>Purchases</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
@@ -2976,9 +2972,9 @@
           <Tables>
             <Table Name="Result" Schema="">
               <Columns>
-                <Column Name="Key" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Id" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
                 <Column Name="LastName" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
-                <Column Name="Value" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Sales" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
               </Columns>
               <SchemaLevels>
                 <SchemaInfo Name="Result" SchemaType="Table" />
@@ -2988,16 +2984,16 @@
         </QueryDesignerState>
       </Query>
       <Fields>
-        <Field Name="Key">
-          <DataField>Key</DataField>
+        <Field Name="Id">
+          <DataField>Id</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="LastName">
           <DataField>LastName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Value">
-          <DataField>Value</DataField>
+        <Field Name="Sales">
+          <DataField>Sales</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
@@ -3010,8 +3006,8 @@
           <Tables>
             <Table Name="Result" Schema="">
               <Columns>
-                <Column Name="Key" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
-                <Column Name="Value" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="CategoryName" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
+                <Column Name="ProductsCount" AliasName="" AggregateType="" IsDuplicate="False" IsSelected="True" />
               </Columns>
               <SchemaLevels>
                 <SchemaInfo Name="Result" SchemaType="Table" />
@@ -3021,12 +3017,12 @@
         </QueryDesignerState>
       </Query>
       <Fields>
-        <Field Name="Key">
-          <DataField>Key</DataField>
+        <Field Name="CategoryName">
+          <DataField>CategoryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Value">
-          <DataField>Value</DataField>
+        <Field Name="ProductsCount">
+          <DataField>ProductsCount</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>

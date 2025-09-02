@@ -18,7 +18,9 @@
   <PackageReference Include="BoldReports.Data.Csv" Version="8.1.7" />
   <PackageReference Include="BoldReports.Data.WebData" Version="8.1.7" />
   <PackageReference Include="BoldReports.Net.Core" Version="8.1.7" />
+  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.8" />
     <ProjectReference Include="..\ReportWithRealTime.Client\ReportWithRealTime.Client.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.6" />
   </ItemGroup>
 

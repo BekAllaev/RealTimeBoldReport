@@ -22,7 +22,7 @@ namespace Backend
 
         // POST api/statistics/updateStatistics
         [HttpPost("updateStatistics")]
-        public async Task<IActionResult> UpdateStatistics([FromBody] int count)
+        public async Task<IActionResult> UpdateStatistics()
         {
             var customersByCountry = new Faker<CustomersByCountry>("en")
                 .RuleFor(x => x.CountryName, f => f.Address.Country())

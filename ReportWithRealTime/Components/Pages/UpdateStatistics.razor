@@ -1,0 +1,17 @@
+﻿@page "/update"
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpFactory
+
+<h3>UpdateStatistics</h3>
+
+<button class="btn btn-primary" @onclick="SendPostRequest">Send Update</button>
+
+@code {
+    private async Task SendPostRequest()
+    {
+        var http = HttpFactory.CreateClient("Api");
+
+        var data = new { }; 
+        var response = await http.PostAsJsonAsync("api/statistics/updateStatistics", data);
+    }
+}
